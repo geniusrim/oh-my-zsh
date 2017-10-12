@@ -24,9 +24,11 @@ local user="%(!.%{$fg[blue]%}.%{$fg[blue]%})%n%{$reset_color%}"
 local host="@${host_repr[$HOST]:-$HOST}%{$reset_color%}"
 
 # Compacted $PWD
-local pwd="%{$fg[blue]%}%c%{$reset_color%}"
+#local pwd="%{$fg[blue]%}%c%{$reset_color%}"
+local pwd="%{$fg[blue]%}%~%{$reset_color%}"
 
-PROMPT='${time} ${user}${host} ${pwd} $(git_prompt_info)'
+PROMPT='${time} ${user}${host} ${pwd} $(git_prompt_info)
+===============> '
 
 # i would prefer 1 icon that shows the "most drastic" deviation from HEAD,
 # but lets see how this works out
