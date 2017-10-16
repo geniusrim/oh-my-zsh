@@ -1,11 +1,17 @@
 # Outputs current branch info in prompt format
 function git_prompt_info() {
-  local ref
-  if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]; then
-    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
-    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
-  fi
+#  local ref
+#  if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]; then
+#    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+#    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+#    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+#  fi
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+#作者：大壮
+#链接：https://www.zhihu.com/question/30196750/answer/69278586
+#来源：知乎
+#著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 }
 
 # Checks if working tree is dirty
